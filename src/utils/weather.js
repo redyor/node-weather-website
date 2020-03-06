@@ -12,6 +12,7 @@ const weather = (lat, long, callback) => {
       callback('Unable to find Location , API Error!', undefined);
     } else {
       const currently = body.currently;
+      //console.log(body.daily.data[0]);
       callback(
         undefined,
         body.daily.data[0].summary +
@@ -19,7 +20,10 @@ const weather = (lat, long, callback) => {
           currently.temperature +
           ' degree with ' +
           currently.precipProbability +
-          ' % of rain'
+          ' % of rain. Hight :' +
+          body.daily.data[0].temperatureHigh +
+          ' Low : ' +
+          body.daily.data[0].temperatureLow
       );
     }
   });
